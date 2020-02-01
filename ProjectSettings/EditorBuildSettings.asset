@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mainMenu.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/dayGame.unity
+    guid: 3861ed991d107ed43b249c1ae4970a79
+  - enabled: 1
+    path: Assets/Scenes/nightPuzzleGame.unity
+    guid: c7bb736a76df2584e8eaad58b04f08b1
+  - enabled: 1
+    path: Assets/Scenes/nightPuzzleSelect.unity
+    guid: fc8ec2496f259ea48b95a21bcd8f948b
   m_configObjects: {}
