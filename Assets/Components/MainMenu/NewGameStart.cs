@@ -15,7 +15,7 @@ public class NewGameStart : MonoBehaviour
         entry.eventID = EventTriggerType.PointerClick;
         entry.callback.AddListener((data) =>
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         });
         trigger.triggers.Add(entry);
     }
