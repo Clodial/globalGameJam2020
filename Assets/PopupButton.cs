@@ -1,21 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class NewGameStart : MonoBehaviour
+public class PopupButton : MonoBehaviour
 {
+
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject[] gameManagers = GameObject.FindGameObjectsWithTag("GameManager");
+        gameManager = gameManagers[0].GetComponent<GameManager>();
+
         EventTrigger trigger = GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerClick;
         entry.callback.AddListener((data) =>
         {
-            SceneManager.LoadScene(2);
+            if (gameManager.GameEnd)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else{
+                SceneManager.LoadScene(4);
+            }
         });
         trigger.triggers.Add(entry);
     }
@@ -23,5 +34,6 @@ public class NewGameStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 }
