@@ -7,12 +7,12 @@ public class JiggyScript : MonoBehaviour
     private bool move;
     private Vector3 startPos;
 
-    public Vector3 POS;
+    private bool set;
     
     // Start is called before the first frame update
     void Start()
     {
-
+        set = false;
     }
 
     // Update is called once per frame
@@ -26,13 +26,21 @@ public class JiggyScript : MonoBehaviour
 
     void Move()
     {
-        move = true;
-        startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        if (!set)
+        {
+            move = true;
+            startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        }
     }
 
     void Drop()
     {
         move = false;
 
+        if (transform.position.magnitude < 0.2f)
+        {
+            transform.position = Vector3.zero;
+            set = true;
+        }
     }
 }
