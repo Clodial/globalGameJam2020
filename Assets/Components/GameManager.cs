@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         public int TimeMind { get; set; }
         public bool GameEnd { get; set; }
 
-    public Dictionary<int, ActivityNode> activities = new Dictionary<int, ActivityNode>();
+        public Dictionary<int, ActivityNode> Activities { get; set; }
 
     public GameManager(int day, int statHeart, int statEndu, int statStr, int statMind, int timeHeart, int timeEndu, int timeStr, int timeMind, bool gameEnd)
         {
@@ -34,18 +34,19 @@ public class GameManager : MonoBehaviour
     // 
     void Start()
     {
-        activities.Add(0, new ActivityNode("mind and heart", BodyStats.MIND, BodyStats.HEART, ""));
-        activities.Add(1, new ActivityNode("mind and heart", BodyStats.MIND, BodyStats.STRENGTH, ""));
-        activities.Add(2, new ActivityNode("mind and heart", BodyStats.MIND, BodyStats.ENDURANCE, ""));
-        activities.Add(3, new ActivityNode("mind and heart", BodyStats.HEART, BodyStats.MIND, ""));
-        activities.Add(4, new ActivityNode("mind and heart", BodyStats.HEART, BodyStats.STRENGTH, ""));
-        activities.Add(5, new ActivityNode("mind and heart", BodyStats.HEART, BodyStats.ENDURANCE, ""));
-        activities.Add(6, new ActivityNode("mind and heart", BodyStats.STRENGTH, BodyStats.HEART, ""));
-        activities.Add(7, new ActivityNode("mind and heart", BodyStats.STRENGTH, BodyStats.MIND, ""));
-        activities.Add(8, new ActivityNode("mind and heart", BodyStats.STRENGTH, BodyStats.ENDURANCE, ""));
-        activities.Add(9, new ActivityNode("mind and heart", BodyStats.ENDURANCE, BodyStats.MIND, ""));
-        activities.Add(10, new ActivityNode("mind and heart", BodyStats.ENDURANCE, BodyStats.STRENGTH, ""));
-        activities.Add(11, new ActivityNode("mind and heart", BodyStats.ENDURANCE, BodyStats.HEART, ""));
+        this.Activities = new Dictionary<int, ActivityNode>();
+        Activities.Add(0, new ActivityNode("mind and heart", BodyStats.MIND, BodyStats.HEART, ""));
+        Activities.Add(1, new ActivityNode("mind and strength", BodyStats.MIND, BodyStats.STRENGTH, ""));
+        Activities.Add(2, new ActivityNode("mind and endurance", BodyStats.MIND, BodyStats.ENDURANCE, ""));
+        Activities.Add(3, new ActivityNode("heart and mind", BodyStats.HEART, BodyStats.MIND, ""));
+        Activities.Add(4, new ActivityNode("heart and strength", BodyStats.HEART, BodyStats.STRENGTH, ""));
+        Activities.Add(5, new ActivityNode("heart and endurance", BodyStats.HEART, BodyStats.ENDURANCE, ""));
+        Activities.Add(6, new ActivityNode("strength and heart", BodyStats.STRENGTH, BodyStats.HEART, ""));
+        Activities.Add(7, new ActivityNode("strength and mind", BodyStats.STRENGTH, BodyStats.MIND, ""));
+        Activities.Add(8, new ActivityNode("strength and endurance", BodyStats.STRENGTH, BodyStats.ENDURANCE, ""));
+        Activities.Add(9, new ActivityNode("endurance and mind", BodyStats.ENDURANCE, BodyStats.MIND, ""));
+        Activities.Add(10, new ActivityNode("endurance and strength", BodyStats.ENDURANCE, BodyStats.STRENGTH, ""));
+        Activities.Add(11, new ActivityNode("endurance and heart", BodyStats.ENDURANCE, BodyStats.HEART, ""));
     }
 
 }

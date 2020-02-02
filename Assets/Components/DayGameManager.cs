@@ -81,7 +81,31 @@ public class DayGameManager : MonoBehaviour
         }
     }
 
+    public void ChangeStats(BodyStats mainStress, BodyStats sideStress, bool addStress) 
+    {
+        CalculateStress(mainStress);
+        if (addStress)
+        {
+            CalculateStress(sideStress);
+        }
+    }
 
-
-
+    private void CalculateStress(BodyStats stresser)
+    {
+        switch (stresser)
+        {
+            case (BodyStats.HEART):
+                hrt--;
+                break;
+            case (BodyStats.MIND):
+                mind--;
+                break;
+            case (BodyStats.STRENGTH):
+                str--;
+                break;
+            default:
+                endu--;
+                break;
+        }
+    }
 }
