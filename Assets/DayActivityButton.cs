@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 public class DayActivityButton : MonoBehaviour
 {
 
-    private BodyStats MainStress { get; set; }
-    private BodyStats SideStress { get; set; }
+    public BodyStats MainStress { get; set; }
+    public BodyStats SideStress { get; set; }
 
     private bool CauseStress { get; set; }
 
