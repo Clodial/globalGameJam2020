@@ -17,23 +17,19 @@ public class GameManager : MonoBehaviour
 
         public Dictionary<int, ActivityNode> Activities { get; set; }
 
-    public GameManager(int day, int statHeart, int statEndu, int statStr, int statMind, int timeHeart, int timeEndu, int timeStr, int timeMind, bool gameEnd)
-        {
-            this.Day = day;
-            this.StatHeart = statHeart;
-            this.StatEndu = statEndu;
-            this.StatStr = statStr;
-            this.StatMind = statMind;
-            this.TimeHeart = timeHeart;
-            this.TimeEndu = timeEndu;
-            this.TimeStr = timeStr;
-            this.TimeMind = timeMind;
-            this.GameEnd = gameEnd;
-        }
-
     // 
     void Start()
     {
+        this.Day = 0;
+        this.StatHeart = 3;
+        this.StatEndu = 3;
+        this.StatStr = 3;
+        this.StatMind = 3;
+        this.TimeHeart = 0;
+        this.TimeEndu = 0;
+        this.TimeStr = 0;
+        this.TimeMind = 0;
+        this.GameEnd = false;
         this.Activities = new Dictionary<int, ActivityNode>();
         Activities.Add(0, new ActivityNode("mind and heart", BodyStats.MIND, BodyStats.HEART, ""));
         Activities.Add(1, new ActivityNode("mind and strength", BodyStats.MIND, BodyStats.STRENGTH, ""));

@@ -27,11 +27,17 @@ public class DayGameManager : MonoBehaviour
     int str;
     int mind;
 
+    public GameObject hrtText;
+    public GameObject enduText;
+    public GameObject strText;
+    public GameObject mindText;
+
     int situation1;
     int situation2;
     int situation3;
 
     bool showPopup;
+    GameObject popupText; 
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +68,10 @@ public class DayGameManager : MonoBehaviour
             situation3 = Random.Range(0, 12);
         }
         EstablishStresser(situation3, activityButton3, activityText3);
+        hrtText.GetComponent<Text>().text = hrt.ToString();
+        enduText.GetComponent<Text>().text = endu.ToString();
+        strText.GetComponent<Text>().text = str.ToString();
+        mindText.GetComponent<Text>().text = mind.ToString();
     }
 
     // Update is called once per frame
@@ -77,19 +87,19 @@ public class DayGameManager : MonoBehaviour
             {
                 if (gameManager.StatEndu == 0)
                 {
-
+                    popupText.GetComponent<Text>().text = "Oh no, you ran out of endurance!";
                 }
                 else if (gameManager.StatHeart == 0)
                 {
-
+                    popupText.GetComponent<Text>().text = "Oh no, you ran out of heart!";
                 }
                 else if (gameManager.StatStr == 0)
                 {
-
+                    popupText.GetComponent<Text>().text = "Oh no, you ran out of strength!";
                 }
                 else
                 {
-
+                    popupText.GetComponent<Text>().text = "Oh no, you went crazy!";
                 }
             }
         }
