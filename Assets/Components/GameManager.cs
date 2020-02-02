@@ -14,10 +14,11 @@ public class GameManager : MonoBehaviour
         public int TimeStr { get; set; }
         public int TimeMind { get; set; }
         public bool GameEnd { get; set; }
+        public BodyStats PuzzleMode { get; set; }
 
         public Dictionary<int, ActivityNode> Activities { get; set; }
 
-    // 
+    
     void Start()
     {
         this.Day = 0;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         this.TimeMind = 0;
         this.GameEnd = false;
         this.Activities = new Dictionary<int, ActivityNode>();
+        this.PuzzleMode = BodyStats.MIND;
         Activities.Add(0, new ActivityNode("mind and heart", BodyStats.MIND, BodyStats.HEART, ""));
         Activities.Add(1, new ActivityNode("mind and strength", BodyStats.MIND, BodyStats.STRENGTH, ""));
         Activities.Add(2, new ActivityNode("mind and endurance", BodyStats.MIND, BodyStats.ENDURANCE, ""));
