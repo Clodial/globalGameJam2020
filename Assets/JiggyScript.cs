@@ -8,6 +8,7 @@ public class JiggyScript : MonoBehaviour
     private Vector3 startPos;
 
     private bool set;
+    private Transform puzzle;
     
     // Start is called before the first frame update
     void Start()
@@ -24,12 +25,13 @@ public class JiggyScript : MonoBehaviour
         }
     }
 
-    void Move()
+    void Move(Transform p)
     {
         if (!set)
         {
             move = true;
             startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            puzzle = p;
         }
     }
 
@@ -41,6 +43,7 @@ public class JiggyScript : MonoBehaviour
         {
             transform.position = Vector3.zero;
             set = true;
+            puzzle.SendMessage("Placed");
         }
     }
 }

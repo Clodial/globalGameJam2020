@@ -9,8 +9,10 @@ public class PuzzleScript : MonoBehaviour
     private int puzzleLvl;
     private int pieceCt;
 
+    public Text message;
     public Text timer;
     private float timeLeft;
+    private bool playing;
 
     private RaycastHit2D hit;
     private Touch touch;
@@ -23,7 +25,8 @@ public class PuzzleScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeLeft = 12 + Time.time;
+        playing = true;
+        timeLeft = 10 + Time.time;
 
         GetPuzzle();
         SetPuzzle(puzzleType, puzzleLvl, pieceCt);
@@ -32,9 +35,25 @@ public class PuzzleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetInput();
+        if (playing)
+        {
+            GetInput();
 
-        timer.text = Mathf.RoundToInt((timeLeft - Time.time)).ToString("D2");
+            if (pieceCt == 0)
+            {
+                message.text = "Ya did it";
+                playing = false;
+            }
+
+            timer.text = Mathf.RoundToInt((timeLeft - Time.time)).ToString("D2");
+
+
+            if (timeLeft - Time.time <= 0)
+            {
+                message.text = "womp womp, ya lost";
+                playing = false;
+            }
+        }
     }
 
     void GetPuzzle()
@@ -57,7 +76,7 @@ public class PuzzleScript : MonoBehaviour
             hit = Physics2D.Raycast(ray.origin, Vector3.forward);
             if (hit.collider != null)
             {
-                hit.collider.SendMessage("Move");
+                hit.collider.SendMessage("Move", transform);
             }
         }
         else if (Input.GetMouseButton(0) && hit.collider != null)
@@ -140,5 +159,10 @@ public class PuzzleScript : MonoBehaviour
         }
 
         return pos;
+    }
+
+    void Placed()
+    {
+        pieceCt--;
     }
 }
