@@ -37,7 +37,7 @@ public class DayGameManager : MonoBehaviour
     int situation3;
 
     bool showPopup;
-    GameObject popupText; 
+    public GameObject popupText; 
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,6 @@ public class DayGameManager : MonoBehaviour
         showPopup = false;
         popupFrame.SetActive(false);
         GameObject[] gameManagers = GameObject.FindGameObjectsWithTag("GameManager");
-        Debug.Log(gameManagers);
         gameManager = gameManagers[0].GetComponent<GameManager>();
 
         hrt = gameManager.StatHeart;

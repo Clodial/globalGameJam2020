@@ -24,8 +24,7 @@ public class PopupButton : MonoBehaviour
             {
                 SceneManager.LoadScene(0);
             }
-            else
-            {
+            else{
                 SceneManager.LoadScene(4);
             }
         });

@@ -234,6 +234,7 @@ MonoBehaviour:
   enduText: {fileID: 348184273}
   strText: {fileID: 1484438728}
   mindText: {fileID: 323233620}
+  popupText: {fileID: 1246336603}
 --- !u!1 &198500667
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +894,8 @@ GameObject:
   - component: {fileID: 713273738}
   - component: {fileID: 713273737}
   - component: {fileID: 713273736}
+  - component: {fileID: 713273739}
+  - component: {fileID: 713273740}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -999,6 +1002,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713273734}
   m_CullTransparentMesh: 0
+--- !u!114 &713273739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713273734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57141afdcdfc11c40b0ded65b2957a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &713273740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713273734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &730053074
 GameObject:
   m_ObjectHideFlags: 0
