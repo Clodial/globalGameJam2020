@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class PuzzleScript : MonoBehaviour
 {
-    private int puzzleType;
+
+    public BodyStats stat;
+
+    //public GameObject mainCamera;
+    private PuzzleManager puzzleManager;
+
+    private BodyStats puzzleType;
     private int puzzleLvl;
     private int pieceCt;
 
@@ -22,14 +28,22 @@ public class PuzzleScript : MonoBehaviour
     public Transform heart1a;
     public Transform heart1b;
 
+    public GameObject popup;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        puzzleManager = Camera.main.GetComponent<PuzzleManager>();
+
         playing = true;
         timeLeft = 10 + Time.time;
 
-        GetPuzzle();
-        SetPuzzle(puzzleType, puzzleLvl, pieceCt);
+        popup.SetActive(false);
+
+        GetPuzzle(puzzleManager);
+        Debug.Log(this.puzzleType);
+        SetPuzzle(this.puzzleType, this.puzzleLvl, this.pieceCt);
     }
 
     // Update is called once per frame
@@ -54,12 +68,16 @@ public class PuzzleScript : MonoBehaviour
                 playing = false;
             }
         }
+        else
+        {
+            popup.SetActive(true);
+        }
     }
 
-    void GetPuzzle()
+    void GetPuzzle(PuzzleManager puzzleManager)
     {
-        puzzleType = 1;
-        puzzleLvl = 1;
+        puzzleType = puzzleManager.chosenStat;
+        puzzleLvl = puzzleManager.levelDifficulty;
         pieceCt = 2;
     }
 
@@ -88,35 +106,61 @@ public class PuzzleScript : MonoBehaviour
         }
     }
 
-    void SetPuzzle(int type, int lvl, int ct)
+    void SetPuzzle(BodyStats type, int lvl, int ct)
     {
         Vector3[] pos = new Vector3[ct];
         
         switch(type)
         {
-            case 1:
+            case BodyStats.HEART:
                 switch (lvl)
                 {
                     case 1:
-                        pos = SetPiece(ct);
-                        clone = Instantiate(heart1a, pos[0], transform.rotation, transform.parent) as Transform;
-                        clone = Instantiate(heart1b, pos[1], transform.rotation, transform.parent) as Transform;
-                        clone.parent = this.transform.parent;
+                        PuzzleSetup(pos, ct);
                         break;
                     default:
                         break;
                 }
                 break;
-            case 2:
+            case BodyStats.ENDURANCE:
+                switch (lvl)
+                {
+                    case 1:
+                        PuzzleSetup(pos, ct);
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case 3:
-                break;
-            case 4:
+            case BodyStats.MIND:
+                switch (lvl)
+                {
+                    case 1:
+                        PuzzleSetup(pos, ct);
+                        break;
+                    default:
+                        break;
+                }
                 break;
             default:
+                switch (lvl)
+                {
+                    case 1:
+                        PuzzleSetup(pos, ct);
+                        break;
+                    default:
+                        break;
+                }
                 break;
-
         }
+    }
+
+    void PuzzleSetup(Vector3[] pos, int numOfPieces)
+    {
+        pos = SetPiece(numOfPieces);
+        clone = Instantiate(heart1a, pos[0], transform.rotation, transform.parent) as Transform;
+        clone = Instantiate(heart1b, pos[1], transform.rotation, transform.parent) as Transform;
+        clone.parent = this.transform.parent;
     }
 
    Vector3[] SetPiece(int ct)

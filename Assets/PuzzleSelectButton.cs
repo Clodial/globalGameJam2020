@@ -21,6 +21,7 @@ public class PuzzleSelectButton : MonoBehaviour
         entry.callback.AddListener((data) =>
         {
             gameManager.PuzzleMode = puzzleMode;
+            Debug.Log(puzzleMode);
             SceneManager.LoadScene(3);
         });
         trigger.triggers.Add(entry);

@@ -5,17 +5,23 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
         public int Day { get; set; }
+        //decides how recovered or not a stat is
         public int StatHeart { get; set; }
         public int StatEndu { get; set; }
         public int StatStr { get; set; }
         public int StatMind { get; set; }
+
+        //what decides the puzzle and its difficulty
         public int TimeHeart { get; set; }
         public int TimeEndu { get; set; }
         public int TimeStr { get; set; }
         public int TimeMind { get; set; }
+
+        //boolean to tell game to say game over
         public bool GameEnd { get; set; }
         public BodyStats PuzzleMode { get; set; }
 
+        // just a list of activities
         public Dictionary<int, ActivityNode> Activities { get; set; }
 
     
